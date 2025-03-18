@@ -2,8 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="description" content="Professional CV of Andrew H. Volk, highlighting academic and professional achievements in Mathematics, Physics, and Education.">
+    <meta name="keywords" content="Andrew Volk, CV, Mathematics, Physics, Education, Engineering Education">
+    <meta name="author" content="Andrew H. Volk">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Andrew H. Volk - Personal Website</title>
+    <title>Andrew H. Volk - Professional CV</title>
     <style>
         :root {
             --primary-color: #3498db;
@@ -11,6 +14,7 @@
             --text-color: #333;
             --background-color: #f9f9f9;
             --card-background: #fff;
+            --secondary-text-color: #444; /* Slightly higher contrast for secondary text */
         }
         
         body {
@@ -28,7 +32,7 @@
             text-align: center;
             padding: 2rem 0;
         }
-        
+
         .profile-image {
             width: 150px;
             height: 150px;
@@ -49,40 +53,18 @@
             height: 100%;
             object-fit: cover;
         }
-        
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-        
-        section {
-            background-color: var(--card-background);
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            padding: 2rem;
-            margin-bottom: 2rem;
-        }
-        
-        h1, h2, h3 {
-            color: var(--secondary-color);
-        }
-        
+
         h1 {
             margin: 0;
             font-size: 2.5rem;
-        }
-        
-        h2 {
-            border-bottom: 2px solid var(--primary-color);
-            padding-bottom: 0.5rem;
-            margin-top: 0;
+            color: white;
         }
         
         .subtitle {
             font-size: 1.2rem;
             margin-top: 0.5rem;
             font-weight: normal;
+            color: white;
         }
         
         .contact-info {
@@ -97,9 +79,144 @@
             display: flex;
             align-items: center;
             gap: 0.5rem;
+            color: white;
+        }
+
+        /*****************************************************
+         * NAVIGATION
+         *****************************************************/
+        nav.navbar {
+            position: sticky;
+            top: 0;
+            background-color: var(--secondary-color);
+            z-index: 999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.25rem 1rem;
+        }
+
+        /* Hamburger button for mobile */
+        .menu-toggle {
+            display: none;
+            background-color: var(--secondary-color);
+            color: #fff;
+            border: none;
+            font-size: 1.3rem;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+        }
+
+        /* UL for main nav items */
+        ul#nav-menu {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        ul#nav-menu > li {
+            position: relative; /* For dropdown positioning */
+        }
+
+        ul#nav-menu > li > a {
+            display: block;
+            padding: 0.75rem 1rem;
+            color: #fff;
+            text-decoration: none;
+            transition: background-color 0.2s ease;
+        }
+
+        ul#nav-menu li a:hover {
+            background-color: var(--primary-color);
+        }
+
+        /* Dropdown menu styles */
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: var(--secondary-color);
+            min-width: 200px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .dropdown-menu li a {
+            display: block;
+            padding: 0.6rem 1rem;
+            white-space: nowrap;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        /* Show dropdown on hover (desktop) */
+        ul#nav-menu > li:hover > .dropdown-menu {
+            display: block;
+        }
+
+        /* MOBILE-SPECIFIC NAV TOGGLE */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block; /* show the hamburger button */
+            }
+
+            /* Hide the menu by default on small screens */
+            #nav-menu {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+            }
+
+            /* When .open is toggled, display the menu */
+            #nav-menu.open {
+                display: flex;
+            }
+
+            /* Ensure dropdown items stack in a column on mobile */
+            #nav-menu > li {
+                width: 100%;
+            }
+
+            /* On mobile, we also handle .dropdown-open for submenus */
+            .dropdown-open {
+                display: block !important;
+            }
+        }
+
+        /*****************************************************
+         * PAGE CONTENT
+         *****************************************************/
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
         }
         
-        .experience-item, .education-item {
+        section {
+            background-color: var(--card-background);
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        h2, h3 {
+            color: var(--secondary-color);
+        }
+        
+        h2 {
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 0.5rem;
+            margin-top: 0;
+        }
+
+        .experience-item,
+        .education-item {
             margin-bottom: 1.5rem;
         }
         
@@ -115,21 +232,25 @@
         }
         
         .item-date {
-            color: #666;
+            color: var(--secondary-text-color);
         }
         
         .item-subtitle {
             font-style: italic;
             margin-bottom: 0.5rem;
         }
-        
+
         .skills-list {
             display: flex;
             flex-wrap: wrap;
             gap: 0.5rem;
         }
-        
-        .skill-tag {
+
+        /* Skill badges */
+        .skill-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
             background-color: var(--primary-color);
             color: white;
             padding: 0.3rem 0.8rem;
@@ -137,21 +258,15 @@
             font-size: 0.9rem;
         }
         
+        .skill-badge::before {
+            content: "✓";
+        }
+        
         footer {
             text-align: center;
             padding: 2rem;
             background-color: var(--secondary-color);
             color: white;
-        }
-        
-        @media (max-width: 768px) {
-            .container {
-                padding: 1rem;
-            }
-            
-            section {
-                padding: 1.5rem;
-            }
         }
         
         .publications-item {
@@ -175,12 +290,58 @@
                 grid-template-columns: 1fr;
             }
         }
+
+        /* Justify text for biography and teaching philosophy */
+        #about p,
+        #philosophy p {
+            text-align: justify;
+        }
+
+        /* Subtle bold/italic for emphasis inside paragraphs */
+        p strong {
+            font-weight: bold;
+        }
+        p em {
+            font-style: italic;
+        }
+
+        /* Download button */
+        .download-container {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        
+        .download-btn {
+            background-color: var(--primary-color);
+            color: #fff;
+            padding: 0.6rem 1rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 1rem;
+        }
+        
+        .download-btn:hover {
+            background-color: #2878b0;
+        }
+
+        /* Highlights near the top */
+        .highlights-list {
+            list-style: disc;
+            margin: 1rem 0 2rem 1.5rem;
+            padding: 0;
+        }
+        .highlights-list li {
+            margin-bottom: 0.5rem;
+        }
     </style>
 </head>
 <body>
+    <!-- Header with profile image and name -->
     <header>
         <div class="profile-image">
-            <img src="headshot150.jpg" alt="Andrew H. Volk" />
+            <img src="headshot150.jpg" alt="Headshot of Andrew H. Volk">
         </div>
         <h1>Andrew H. Volk</h1>
         <p class="subtitle">Assistant Professor of Mathematics and Physics</p>
@@ -203,27 +364,121 @@
                     <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
                     <circle cx="12" cy="10" r="3"></circle>
                 </svg>
-                <span>Liberty University, 1971 University Blvd, Lynchburg, VA 24515</span>
+                <span>1971 University Blvd, Lynchburg, VA 24515</span>
             </div>
         </div>
     </header>
 
+    <!-- Sticky Navigation Bar with Dropdowns -->
+    <nav class="navbar">
+        <!-- Hamburger / Menu Icon for small screens -->
+        <button class="menu-toggle" onclick="toggleNavbar()">☰</button>
+        
+        <ul id="nav-menu">
+            <!-- ABOUT Dropdown -->
+            <li>
+                <a href="#!">About</a>
+                <ul class="dropdown-menu">
+                    <li><a href="#about">Biography</a></li>
+                    <li><a href="#philosophy">Teaching Philosophy</a></li>
+                </ul>
+            </li>
+
+            <!-- ACADEMICS Dropdown -->
+            <li>
+                <a href="#!">Academics</a>
+                <ul class="dropdown-menu">
+                    <li><a href="#education">Education</a></li>
+                    <li><a href="#courses">Courses Taught</a></li>
+                    <li><a href="#publications">Publications</a></li>
+                    <li><a href="#research">Research Interests</a></li>
+                </ul>
+            </li>
+
+            <!-- ACTIVITIES Dropdown -->
+            <li>
+                <a href="#!">Activities</a>
+                <ul class="dropdown-menu">
+                    <li><a href="#experience">Professional Experience</a></li>
+                    <li><a href="#presentations">Conference Presentations</a></li>
+                    <li><a href="#community">Community Service</a></li>
+                    <li><a href="#mentoring">Advising & Mentoring</a></li>
+                    <li><a href="#youtube">Educational Media</a></li>
+                </ul>
+            </li>
+
+            <!-- HONORS & AWARDS -->
+            <li><a href="#honors">Honors & Awards</a></li>
+
+        </ul>
+    </nav>
+
     <div class="container">
+        <!-- Download as PDF button -->
+        <div class="download-container">
+            <button class="download-btn" onclick="window.print()">Download as PDF</button>
+        </div>
+
+        <!-- Professional Summary -->
+        <section>
+            <h2>Professional Summary</h2>
+            <p>
+                Dedicated Assistant Professor and researcher with significant experience in
+                <strong>mathematics education, physics instruction, and curriculum design</strong>.
+                Proven track record of integrating technology and assessment strategies to
+                <em>enhance student engagement</em> and foster academic growth. Skilled in
+                leading collaborative teaching initiatives, publishing peer-reviewed articles,
+                and presenting at national conferences.
+            </p>
+        </section>
+
+        <!-- Key Achievements (Highlights) -->
+        <section>
+            <h2>Key Achievements</h2>
+            <ul class="highlights-list">
+                <li>Recipient of multiple teaching and service awards (e.g., VCTM Educator of the Year)</li>
+                <li>Authored and co-authored publications on mathematics pedagogy and educational technology</li>
+                <li>Led cross-disciplinary research projects integrating math, physics, and digital humanities</li>
+            </ul>
+        </section>
+
         <section id="about">
             <h2>Biography</h2>
-            <p>Mr. Andrew Volk serves as an Assistant Professor at Liberty University. He began his career as a mathematics teacher after graduating with a B.S. degree in Mathematics from Liberty in 2011 and has taught in multiple school districts and levels with a focus on promoting student growth. He has also occasionally worked as a Software Engineer and/or developer. Today, Professor Volk enjoys teaching math and physics, collaborating with faculty, and ministering to the campus and the local community.</p>
-            <p>With multiple master's degrees in Mathematics, Science Education, and Instructional Design, Mr. Volk brings a diverse educational background to his work. Currently pursuing a Ph.D. in Engineering Education at Mississippi State University, he is particularly interested in teaching for growth and mastery, assessment practices, and connecting the human elements of mathematics to make the subject more accessible and engaging.</p>
+            <p>
+                Mr. Andrew Volk serves as an Assistant Professor at Liberty University. He began his career 
+                as a mathematics teacher after graduating with a B.S. degree in Mathematics from Liberty in 2011 
+                and has taught in multiple school districts and levels with a focus on promoting student growth. 
+                He has also occasionally worked as a Software Engineer and/or developer. Today, Professor Volk 
+                enjoys teaching math and physics, collaborating with faculty, and ministering to the campus and 
+                the local community.
+            </p>
+            <p>
+                With multiple master's degrees in Mathematics, Science Education, and Instructional Design, 
+                Mr. Volk brings a diverse educational background to his work. Currently pursuing a Ph.D. in 
+                Engineering Education at Mississippi State University, he is particularly interested in teaching 
+                for growth and mastery, assessment practices, and connecting the human elements of mathematics 
+                to make the subject more accessible and engaging.
+            </p>
         </section>
 
         <section id="philosophy">
             <h2>Teaching Philosophy</h2>
-            <p>Learning is about change and growth. Learning is not simply about gaining knowledge or facts, but rather changing who the learner is and growing to be something new and better than they were before. In that way, teaching becomes focused on growing, developing, and cultivating the student as a person. A big part of what I have been focused on during my career as an educator is developing student mindsets for that growth. That involves empowering students to take control of their learning and providing an environment where they can see their growth in a way that is more than a letter grade.</p>
+            <p>
+                Learning is about <em>change and growth</em>. It is not simply about gaining knowledge or facts, 
+                but rather changing who the learner is and growing to be something new and better than they were 
+                before. In that way, teaching becomes focused on growing, developing, and cultivating the student 
+                as a person. A big part of what I have been focused on during my career as an educator is 
+                developing student mindsets for that growth. That involves empowering students to take control 
+                of their learning and providing an environment where they can see their growth in a way that is 
+                more than a letter grade.
+            </p>
         </section>
 
         <div class="two-column">
             <section id="education">
                 <h2>Education</h2>
-                
+
+                <!-- PhD in progress (ABD) from second file -->
                 <div class="education-item">
                     <div class="item-header">
                         <span class="item-title">Ph.D. Engineering Education (In Progress - ABD)</span>
@@ -231,7 +486,7 @@
                     </div>
                     <div class="item-subtitle">Mississippi State University, Starkville, MS</div>
                 </div>
-                
+
                 <div class="education-item">
                     <div class="item-header">
                         <span class="item-title">M.A. Science Education (Secondary Physics)</span>
@@ -271,6 +526,7 @@
 
             <section id="courses">
                 <h2>Courses Taught</h2>
+
                 <h3>Liberty University</h3>
                 <ul>
                     <li>PHYS 103: Elements of Physics Lab</li>
@@ -288,7 +544,7 @@
                 <ul>
                     <li>MATH 280: Intro to Probability/Stats</li>
                 </ul>
-                
+
                 <h3>Professional Memberships</h3>
                 <ul>
                     <li>Virginia Council of Teachers of Mathematics</li>
@@ -303,9 +559,55 @@
             </section>
         </div>
 
+        <section id="publications">
+            <h2>Publications</h2>
+            <div class="publications-item">
+                <p>Volk, A. H. (2021, Sep 1). A Practitioner's Review of Visible Learning for Mathematics Classrooms. MathBits. 
+                    <a href="http://www.mctmmathbits.org/?p=3510" target="_blank">
+                        http://www.mctmmathbits.org/?p=3510
+                    </a>
+                </p>
+            </div>
+            <div class="publications-item">
+                <p>Volk, A. H. (2019). Euclidea: The game of geometric constructions. Virginia Mathematics Teacher, 46(1), 56-57</p>
+            </div>
+            <div class="publications-item">
+                <p>Volk, A. H. (2019). Flatland by Edwin Abbott Abbott. Virginia Mathematics Teacher, 45(2), 36-36</p>
+            </div>
+        </section>
+
+        <section id="research">
+            <h2>Research Interests</h2>
+            <div class="experience-item">
+                <div class="item-title">Teaching for Growth and Mastery</div>
+                <p>Research topics within this broader category including growth mindset, grit, U-PACE, and learning retention.</p>
+            </div>
+            <div class="experience-item">
+                <div class="item-title">Assessing Consistently and Grading Sparingly</div>
+                <p>Assessment practices in the classroom and in business environments are an area full of interesting and very meaningful research on how to best motivate and affect change.</p>
+            </div>
+            <div class="experience-item">
+                <div class="item-title">Humanity and Curiosity in Mathematics</div>
+                <p>There are too many people that disconnect mathematics from the humans that create it. There is room for mathematics research to connect the narrative and human elements of mathematics and its history in a way that demystifies the subject.</p>
+            </div>
+            <div class="experience-item">
+                <div class="item-title">Mathematics and Education</div>
+                <p>Research on effective teaching methods and learning outcomes in mathematics education.</p>
+            </div>
+            <div class="experience-item">
+                <div class="item-title">Digital Humanities</div>
+                <p>Exploring the intersection of technology, computational methods, and humanities disciplines.</p>
+            </div>
+            <div class="experience-item">
+                <div class="item-title">Math History</div>
+                <p>Studying the historical development of mathematical concepts and the people behind them.</p>
+            </div>
+        </section>
+
+        <!-- PROFESSIONAL EXPERIENCE -->
         <section id="experience">
             <h2>Professional Experience</h2>
-            
+
             <div class="experience-item">
                 <div class="item-header">
                     <span class="item-title">Assistant Professor of Mathematics and Physics</span>
@@ -382,82 +684,8 @@
                 <div class="item-subtitle">Various Companies</div>
             </div>
         </section>
-        
-        <section id="mentoring">
-            <h2>Student Advising & Mentoring</h2>
-            
-            <div class="experience-item">
-                <div class="item-header">
-                    <span class="item-title">Honor Thesis Committee Chair</span>
-                    <span class="item-date">October 2023 - Present</span>
-                </div>
-                <p>Served as a Chair to support a student's honor's thesis project. Provided direction, advice, and feedback.</p>
-            </div>
-            
-            <div class="experience-item">
-                <div class="item-header">
-                    <span class="item-title">Honor Thesis Committee Reader</span>
-                    <span class="item-date">January 2024 - Present</span>
-                </div>
-                <p>Served as a reader to support a student's honor's thesis project. Provided advice and feedback.</p>
-            </div>
-        </section>
-        
-        <section id="youtube">
-            <h2>Educational Media & Content Creation</h2>
-            
-            <div class="experience-item">
-                <div class="item-header">
-                    <span class="item-title">Learn Abundantly YouTube Channel</span>
-                    <span class="item-date">Current</span>
-                </div>
-                <div class="item-subtitle">Creator, Instructor, and Educational Content Developer</div>
-                <p>Founded and manage an educational YouTube channel dedicated to mathematics instruction and problem-solving strategies. The channel serves as a supplemental learning resource for students at various levels, aligning with my teaching philosophy of making mathematics more accessible and engaging.</p>
-                
-                <h3>Featured Content</h3>
-                <ul>
-                    <li><strong>"Algebra: Graph Piecewise Functions in Desmos"</strong> - Interactive tutorial demonstrating practical applications of graphing technology in algebra education.</li>
-                    <li><strong>"How to Solve Combination Word Problems FAST!"</strong> - Strategic approach to combinatorial mathematics with real-world applications.</li>
-                    <li><strong>"28 Math Questions Everyone Should Know!"</strong> - Comprehensive review of essential mathematical concepts designed to build foundational skills.</li>
-                </ul>
-                
-                <h3>Impact & Reach</h3>
-                <p>The channel serves as an extension of classroom teaching, providing students with additional resources for review and practice. Content development reflects research interests in making mathematics more accessible and connecting mathematical concepts to practical applications.</p>
-                
-                <p>Channel URL: <a href="https://www.youtube.com/learnabundantly" target="_blank">https://www.youtube.com/learnabundantly</a></p>
-            </div>
-        </section>
 
-        <section id="honors">
-            <h2>Honors & Awards</h2>
-            <ul>
-                <li>LMS Impact Educator of the Year Award, Lynchburg City Schools, 2020</li>
-                <li>MathCounts Team 3rd Place Regional Finish as Coach, 2020</li>
-                <li>VCTM William C. Lowry Math Educator of The Year Award, 2019</li>
-                <li>Above and Beyond Call of Duty Award, 2015</li>
-                <li>Teacher of Promise Institute, 2011</li>
-                <li>SDP Distinguished Service Award, 2011</li>
-                <li>ETS Recognition of Excellence Award, 2010</li>
-                <li>Gift of the Spirit Service Award, 2010</li>
-                <li>Barlow Scholarship Award, 2010</li>
-            </ul>
-        </section>
-        
-        <section id="publications">
-            <h2>Publications</h2>
-            <div class="publications-item">
-                <p>Volk, A. H. (2021, Sep 1). A Practitioner's Review of Visible Learning for Mathematics Classrooms. MathBits. <a href="http://www.mctmmathbits.org/?p=3510" target="_blank">http://www.mctmmathbits.org/?p=3510</a></p>
-            </div>
-            
-            <div class="publications-item">
-                <p>Volk, A. H. (2019). Euclidea: The game of geometric constructions. Virginia Mathematics Teacher, 46(1), 56-57</p>
-            </div>
-            
-            <div class="publications-item">
-                <p>Volk, A. H. (2019). Flatland by Edwin Abbott Abbott. Virginia Mathematics Teacher, 45(2), 36-36</p>
-            </div>
-        </section>
-        
+        <!-- CONFERENCE PRESENTATIONS -->
         <section id="presentations">
             <h2>Conference Presentations</h2>
             
@@ -518,10 +746,10 @@
                 </ul>
             </div>
         </section>
-        
+
+        <!-- COMMUNITY SERVICE -->
         <section id="community">
             <h2>Community & Church Service</h2>
-            
             <div class="experience-item">
                 <div class="item-header">
                     <span class="item-title">Small Group Leader</span>
@@ -540,66 +768,108 @@
                 <p>Serve 2-4 times per month serving the kids ministry as a host, helper, or teacher.</p>
             </div>
         </section>
-        
-        <section id="research">
-            <h2>Research Interests</h2>
-            
+
+        <!-- MENTORING -->
+        <section id="mentoring">
+            <h2>Student Advising & Mentoring</h2>
             <div class="experience-item">
-                <div class="item-title">Teaching for Growth and Mastery</div>
-                <p>Research topics within this broader category including growth mindset, grit, U-PACE, and learning retention.</p>
+                <div class="item-header">
+                    <span class="item-title">Honor Thesis Committee Chair</span>
+                    <span class="item-date">October 2023 - Present</span>
+                </div>
+                <p>Served as a Chair to support a student's honor's thesis project. Provided direction, advice, and feedback.</p>
             </div>
             
             <div class="experience-item">
-                <div class="item-title">Assessing Consistently and Grading Sparingly</div>
-                <p>Assessment practices in the classroom and in business environments are an area full of interesting and very meaningful research on how to best motivate and affect change.</p>
-            </div>
-            
-            <div class="experience-item">
-                <div class="item-title">Humanity and Curiosity in Mathematics</div>
-                <p>There are too many people that disconnect mathematics from the humans that create it. There is room for mathematics research to connect the narrative and human elements of mathematics and its history in a way that demystifies the subject.</p>
-            </div>
-            
-            <div class="experience-item">
-                <div class="item-title">Mathematics and Education</div>
-                <p>Research on effective teaching methods and learning outcomes in mathematics education.</p>
-            </div>
-            
-            <div class="experience-item">
-                <div class="item-title">Digital Humanities</div>
-                <p>Exploring the intersection of technology, computational methods, and humanities disciplines.</p>
-            </div>
-            
-            <div class="experience-item">
-                <div class="item-title">Math History</div>
-                <p>Studying the historical development of mathematical concepts and the people behind them.</p>
+                <div class="item-header">
+                    <span class="item-title">Honor Thesis Committee Reader</span>
+                    <span class="item-date">January 2024 - Present</span>
+                </div>
+                <p>Served as a reader to support a student's honor's thesis project. Provided advice and feedback.</p>
             </div>
         </section>
-        
-        <section id="skills">
-            <h2>Skills</h2>
-            <div class="skills-list">
-                <span class="skill-tag">Mathematics</span>
-                <span class="skill-tag">Physics</span>
-                <span class="skill-tag">Spanish</span>
-                <span class="skill-tag">Programming</span>
-                <span class="skill-tag">Instructional Design</span>
-                <span class="skill-tag">Data Analysis</span>
-                <span class="skill-tag">Curriculum Development</span>
-                <span class="skill-tag">Educational Research</span>
-                <span class="skill-tag">Educational Technology</span>
-                <span class="skill-tag">Formative Assessment</span>
-                <span class="skill-tag">Software Engineering</span>
-                <span class="skill-tag">Web Development</span>
-                <span class="skill-tag">Digital Humanities</span>
+
+        <!-- EDUCATIONAL MEDIA -->
+        <section id="youtube">
+            <h2>Educational Media & Content Creation</h2>
+            <div class="experience-item">
+                <div class="item-header">
+                    <span class="item-title">Learn Abundantly YouTube Channel</span>
+                    <span class="item-date">Current</span>
+                </div>
+                <div class="item-subtitle">Creator, Instructor, and Educational Content Developer</div>
+                <p>
+                    Founded and manage an educational YouTube channel dedicated to mathematics instruction and 
+                    problem-solving strategies. The channel serves as a supplemental learning resource for students 
+                    at various levels, aligning with my teaching philosophy of making mathematics more accessible 
+                    and engaging.
+                </p>
+                
+                <h3>Featured Content</h3>
+                <ul>
+                    <li><strong>“Algebra: Graph Piecewise Functions in Desmos”</strong> – Interactive tutorial demonstrating practical applications of graphing technology in algebra education.</li>
+                    <li><strong>“How to Solve Combination Word Problems FAST!”</strong> – Strategic approach to combinatorial mathematics with real-world applications.</li>
+                    <li><strong>“28 Math Questions Everyone Should Know!”</strong> – Comprehensive review of essential mathematical concepts designed to build foundational skills.</li>
+                </ul>
+                
+                <h3>Impact & Reach</h3>
+                <p>
+                    The channel serves as an extension of classroom teaching, providing students with additional 
+                    resources for review and practice. Content development reflects research interests in making 
+                    mathematics more accessible and connecting mathematical concepts to practical applications.
+                </p>
+                
+                <p>Channel URL: 
+                    <a href="https://www.youtube.com/learnabundantly" target="_blank">
+                        https://www.youtube.com/learnabundantly
+                    </a>
+                </p>
             </div>
+        </section>
+
+        <!-- HONORS & AWARDS -->
+        <section id="honors">
+            <h2>Honors & Awards</h2>
+            <ul>
+                <li>LMS Impact Educator of the Year Award, Lynchburg City Schools, 2020</li>
+                <li>MathCounts Team 3rd Place Regional Finish as Coach, 2020</li>
+                <li>VCTM William C. Lowry Math Educator of The Year Award, 2019</li>
+                <li>Above and Beyond Call of Duty Award, 2015</li>
+                <li>Teacher of Promise Institute, 2011</li>
+                <li>SDP Distinguished Service Award, 2011</li>
+                <li>ETS Recognition of Excellence Award, 2010</li>
+                <li>Gift of the Spirit Service Award, 2010</li>
+                <li>Barlow Scholarship Award, 2010</li>
+            </ul>
         </section>
     </div>
 
     <footer>
         <p>© <span id="current-year">2025</span> Andrew H. Volk. All rights reserved.</p>
         <script>
+            // Update footer year
             document.getElementById('current-year').textContent = new Date().getFullYear();
+
+            // Toggle entire nav menu on mobile
+            function toggleNavbar() {
+                const navMenu = document.getElementById('nav-menu');
+                navMenu.classList.toggle('open');
+            }
+
+            // Toggle dropdowns on mobile click
+            document.addEventListener('click', function(event) {
+                // If a top-level nav link was tapped/clicked
+                if (event.target.matches('#nav-menu > li > a')) {
+                    const dropdown = event.target.nextElementSibling;
+                    // If there's a submenu, toggle it (stop normal link on mobile)
+                    if (dropdown && dropdown.classList.contains('dropdown-menu')) {
+                        event.preventDefault();
+                        dropdown.classList.toggle('dropdown-open');
+                    }
+                }
+            });
         </script>
     </footer>
 </body>
 </html>
+```
