@@ -16,6 +16,12 @@
     --border-radius: 8px;
     --transition: all 0.3s ease;
 }
+/* No bullet points */
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
 
 /* Base styles */
 body {
