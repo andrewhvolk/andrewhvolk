@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Statistical Measures Infographic</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Arial', sans-serif;
+    }
+    
+    body {
+      background-color: #f5f7fa;
+      color: #333;
+      padding: 20px;
+    }
+    
+    .infographic {
+      max-width: 900px;
+      margin: 0 auto;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
+    
+    .header {
+      background-color: #2c3e50;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    
+    .header h1 {
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+    
+    .header p {
+      font-size: 16px;
+      opacity: 0.9;
+    }
+    
+    .section {
+      padding: 25px;
+      border-bottom: 1px solid #eee;
+    }
+    
+    .section:last-child {
+      border-bottom: none;
+    }
+    
+    .section h2 {
+      color: #2c3e50;
+      margin-bottom: 20px;
+      font-size: 22px;
+      border-left: 4px solid #3498db;
+      padding-left: 10px;
+    }
+    
+    .central-tendency, .distribution-spread {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: space-between;
+    }
+    
+    .measure-card {
+      background-color: #f8f9fa;
+      border-radius: 8px;
+      padding: 15px;
+      width: 48%;
+      margin-bottom: 15px;
+      border-top: 4px solid;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+    
+    .measure-card.mean {
+      border-top-color: #e74c3c;
+    }
+    
+    .measure-card.median {
+      border-top-color: #3498db;
+    }
+    
+    .measure-card.mode {
+      border-top-color: #2ecc71;
+    }
+    
+    .measure-card.range {
+      border-top-color: #f39c12;
+    }
+    
+    .measure-card.variance {
+      border-top-color: #9b59b6;
+    }
+    
+    .measure-card.std-dev {
+      border-top-color: #1abc9c;
+    }
+    
+    .measure-card.iqr {
+      border-top-color: #e67e22;
+    }
+    
+    .measure-card h3 {
+      font-size: 18px;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .formula {
+      background-color: rgba(0,0,0,0.05);
+      padding: 8px 12px;
+      border-radius: 6px;
+      font-family: monospace;
+      margin: 10px 0;
+      text-align: center;
+      font-size: 16px;
+    }
+    
+    .pros-cons {
+      display: flex;
+      gap: 10px;
+      margin-top: 15px;
+      font-size: 14px;
+    }
+    
+    .pros, .cons {
+      flex: 1;
+      padding: 8px;
+      border-radius: 4px;
+    }
+    
+    .pros {
+      background-color: rgba(46, 204, 113, 0.1);
+      border-left: 3px solid #2ecc71;
+    }
+    
+    .cons {
+      background-color: rgba(231, 76, 60, 0.1);
+      border-left: 3px solid #e74c3c;
+    }
+    
+    .pros h4, .cons h4 {
+      font-size: 14px;
+      margin-bottom: 5px;
+    }
+    
+    .example {
+      background-color: #f0f7ff;
+      padding: 12px;
+      border-radius: 6px;
+      margin-top: 15px;
+      font-size: 14px;
+    }
+    
+    .example h4 {
+      font-size: 15px;
+      margin-bottom: 8px;
+      color: #2980b9;
+    }
+    
+    .footer {
+      background-color: #ecf0f1;
+      padding: 15px;
+      text-align: center;
+      font-size: 14px;
+      color: #7f8c8d;
+    }
+    
+    .visualization {
+      text-align: center;
+      margin: 10px 0;
+    }
+    
+    .dataset {
+      background-color: #f5f5f5;
+      padding: 10px;
+      border-radius: 5px;
+      text-align: center;
+      margin-bottom: 15px;
+    }
+    
+    .dataset-numbers {
+      font-family: monospace;
+      font-size: 16px;
+      margin-top: 5px;
+      color: #333;
+    }
+    
+    @media (max-width: 768px) {
+      .measure-card {
+        width: 100%;
+      }
+      
+      .pros-cons {
+        flex-direction: column;
+      }
+    }
+    
+    .key-point {
+      border-left: 3px solid #3498db;
+      padding-left: 10px;
+      margin: 10px 0;
+      font-size: 15px;
+      color: #2c3e50;
+    }
+    
+    .distributions {
+      display: flex;
+      justify-content: space-around;
+      margin: 20px 0;
+      text-align: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    
+    .distribution {
+      width: 30%;
+    }
+    
+    .distribution h4 {
+      margin-bottom: 10px;
+      font-size: 16px;
+    }
+    
+    @media (max-width: 768px) {
+      .distribution {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="infographic">
+    <div class="header">
+      <h1>Understanding Statistical Measures</h1>
+      <p>A guide to measures of central tendency and distribution spreads</p>
+    </div>
+    
+    <div class="section">
+      <div class="dataset">
+        <p>Sample Dataset:</p>
+        <div class="dataset-numbers">4, 7, 10, 12, 12, 15, 18, 22</div>
+      </div>
+      
+      <h2>Measures of Central Tendency</h2>
+      <p>Central tendency measures help us find the "center" or the most "typical" value in a dataset.</p>
+      
+      <div class="central-tendency">
+        <div class="measure-card mean">
+          <h3>Mean (Average)</h3>
+          <p>The sum of all values divided by the number of values.</p>
+          <div class="formula">μ = (∑x) / n</div>
+          <div class="example">
+            <h4>Example Calculation:</h4>
+            <p>(4 + 7 + 10 + 12 + 12 + 15 + 18 + 22) ÷ 8 = 100 ÷ 8 = 12.5</p>
+          </div>
+          <div class="pros-cons">
+            <div class="pros">
+              <h4>Pros:</h4>
+              <p>Uses all data points; mathematically useful for further calculations</p>
+            </div>
+            <div class="cons">
+              <h4>Cons:</h4>
+              <p>Sensitive to outliers; may not represent the "typical" value</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="measure-card median">
+          <h3>Median</h3>
+          <p>The middle value when all values are arranged in order.</p>
+          <div class="formula">Mdn = middle value (or average of two middle values)</div>
+          <div class="example">
+            <h4>Example Calculation:</h4>
+            <p>4, 7, 10, <strong>12, 12</strong>, 15, 18, 22</p>
+            <p>Median = (12 + 12) ÷ 2 = 12</p>
+          </div>
+          <div class="pros-cons">
+            <div class="pros">
+              <h4>Pros:</h4>
+              <p>Not affected by outliers; better for skewed distributions</p>
+            </div>
+            <div class="cons">
+              <h4>Cons:</h4>
+              <p>Ignores the actual values of most data points</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="measure-card mode">
+          <h3>Mode</h3>
+          <p>The value that appears most frequently in the dataset.</p>
+          <div class="formula">Mode = most common value(s)</div>
+          <div class="example">
+            <h4>Example Calculation:</h4>
+            <p>4, 7, 10, <strong>12, 12</strong>, 15, 18, 22</p>
+            <p>Mode = 12 (appears twice)</p>
+          </div>
+          <div class="pros-cons">
+            <div class="pros">
+              <h4>Pros:</h4>
+              <p>Shows most frequent value; useful for categorical data</p>
+            </div>
+            <div class="cons">
+              <h4>Cons:</h4>
+              <p>May not exist or may be multiple values (multimodal)</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="key-point">
+          When to use each measure: Use mean for normally distributed data, median for skewed data or data with outliers, and mode for categorical data or to find the most common value.
+        </div>
+      </div>
+    </div>
+    
+    <div class="section">
+      <h2>Measures of Spread (Dispersion)</h2>
+      <p>Spread measures tell us how much the data points vary or are dispersed from the central value.</p>
+      
+      <div class="distribution-spread">
+        <div class="measure-card range">
+          <h3>Range</h3>
+          <p>The difference between the maximum and minimum values.</p>
+          <div class="formula">Range = Max - Min</div>
+          <div class="example">
+            <h4>Example Calculation:</h4>
+            <p>4, 7, 10, 12, 12, 15, 18, 22</p>
+            <p>Range = 22 - 4 = 18</p>
+          </div>
+          <div class="pros-cons">
+            <div class="pros">
+              <h4>Pros:</h4>
+              <p>Simple to calculate and understand</p>
+            </div>
+            <div class="cons">
+              <h4>Cons:</h4>
+              <p>Only uses two values; highly sensitive to outliers</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="measure-card variance">
+          <h3>Variance</h3>
+          <p>The average of squared differences from the mean.</p>
+          <div class="formula">σ² = ∑(x - μ)² / n</div>
+          <div class="example">
+            <h4>Example Calculation (simplified):</h4>
+            <p>For our dataset with mean = 12.5:</p>
+            <p>Sum of squared differences = 267</p>
+            <p>Variance = 267 ÷ 8 = 33.375</p>
+          </div>
+          <div class="pros-cons">
+            <div class="pros">
+              <h4>Pros:</h4>
+              <p>Uses all data points; foundation for other statistical measures</p>
+            </div>
+            <div class="cons">
+              <h4>Cons:</h4>
+              <p>Not in the original units (squared units); harder to interpret</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="measure-card std-dev">
+          <h3>Standard Deviation</h3>
+          <p>The square root of the variance; average distance from the mean.</p>
+          <div class="formula">σ = √σ²</div>
+          <div class="example">
+            <h4>Example Calculation:</h4>
+            <p>Standard Deviation = √33.375 = 5.78</p>
+          </div>
+          <div class="pros-cons">
+            <div class="pros">
+              <h4>Pros:</h4>
+              <p>In same units as original data; useful for normal distributions</p>
+            </div>
+            <div class="cons">
+              <h4>Cons:</h4>
+              <p>Still sensitive to outliers; assumes symmetric distribution</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="measure-card iqr">
+          <h3>Interquartile Range (IQR)</h3>
+          <p>The range of the middle 50% of the data.</p>
+          <div class="formula">IQR = Q₃ - Q₁</div>
+          <div class="example">
+            <h4>Example Calculation:</h4>
+            <p>Q₁ (25th percentile) = 7.75</p>
+            <p>Q₃ (75th percentile) = 16.5</p>
+            <p>IQR = 16.5 - 7.75 = 8.75</p>
+          </div>
+          <div class="pros-cons">
+            <div class="pros">
+              <h4>Pros:</h4>
+              <p>Robust against outliers; useful for skewed distributions</p>
+            </div>
+            <div class="cons">
+              <h4>Cons:</h4>
+              <p>Ignores 50% of the data (the tails)</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="section">
+      <h2>Distribution Shapes</h2>
+      <p>The shape of a distribution affects which measure of central tendency and spread is most appropriate.</p>
+      
+      <div class="distributions">
+        <div class="distribution">
+          <h4>Normal (Symmetric)</h4>
+          <svg width="120" height="100" viewBox="0 0 120 100">
+            <path d="M10,90 C30,90 40,10 60,10 C80,10 90,90 110,90" fill="none" stroke="#3498db" stroke-width="2"/>
+            <line x1="60" y1="10" x2="60" y2="95" stroke="#e74c3c" stroke-width="2" stroke-dasharray="5,5"/>
+            <text x="50" y="98" font-size="10" fill="#333">Mean = Median</text>
+          </svg>
+          <p>Mean = Median = Mode</p>
+          <p>Best measures: Mean, Standard Deviation</p>
+        </div>
+        
+        <div class="distribution">
+          <h4>Right-Skewed</h4>
+          <svg width="120" height="100" viewBox="0 0 120 100">
+            <path d="M10,90 C30,20 60,70 110,90" fill="none" stroke="#3498db" stroke-width="2"/>
+            <line x1="30" y1="90" x2="30" y2="20" stroke="#2ecc71" stroke-width="2" stroke-dasharray="5,5"/>
+            <line x1="42" y1="90" x2="42" y2="50" stroke="#e74c3c" stroke-width="2" stroke-dasharray="5,5"/>
+            <line x1="60" y1="90" x2="60" y2="70" stroke="#9b59b6" stroke-width="2" stroke-dasharray="5,5"/>
+            <text x="20" y="98" font-size="8" fill="#333">Mode < Median < Mean</text>
+          </svg>
+          <p>Mode < Median < Mean</p>
+          <p>Best measures: Median, IQR</p>
+        </div>
+        
+        <div class="distribution">
+          <h4>Left-Skewed</h4>
+          <svg width="120" height="100" viewBox="0 0 120 100">
+            <path d="M10,90 C60,70 90,20 110,90" fill="none" stroke="#3498db" stroke-width="2"/>
+            <line x1="60" y1="90" x2="60" y2="70" stroke="#9b59b6" stroke-width="2" stroke-dasharray="5,5"/>
+            <line x1="78" y1="90" x2="78" y2="50" stroke="#e74c3c" stroke-width="2" stroke-dasharray="5,5"/>
+            <line x1="90" y1="90" x2="90" y2="20" stroke="#2ecc71" stroke-width="2" stroke-dasharray="5,5"/>
+            <text x="20" y="98" font-size="8" fill="#333">Mean < Median < Mode</text>
+          </svg>
+          <p>Mean < Median < Mode</p>
+          <p>Best measures: Median, IQR</p>
+        </div>
+      </div>
+      
+      <div class="key-point">
+        For normal distributions, mean and standard deviation are most useful. For skewed distributions, median and IQR are more representative.
+      </div>
+    </div>
+    
+    <div class="footer">
+      <p>Understanding these fundamental statistical measures is essential for data analysis and interpretation.</p>
+    </div>
+  </div>
+</body>
+</html>

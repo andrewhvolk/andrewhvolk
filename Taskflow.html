@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Daily Task Flowchart</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .flowchart {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* Each “box” or node in the flowchart */
+    .node {
+      background: #f9f9f9;
+      border: 2px solid #ccc;
+      border-radius: 8px;
+      text-align: center;
+      width: 250px;
+      padding: 10px;
+      margin: 20px;
+      position: relative;
+    }
+
+    /* Lines connecting nodes: we will use pseudo-elements */
+    .node::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: -20px;
+      width: 0;
+      height: 0;
+      border-left: 8px solid transparent;
+      border-right: 8px solid transparent;
+      border-top: 20px solid #ccc;
+      transform: translateX(-50%);
+    }
+
+    /* Hide the arrow on final “leaf” nodes */
+    .leaf::after {
+      border: none;
+    }
+
+    /* Simple emphasis for “Yes” / “No” connectors */
+    .decision {
+      color: #007BFF;
+      font-weight: bold;
+    }
+
+    /* Connections for branching columns */
+    .branch-container {
+      display: flex;
+      justify-content: space-around;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <h1>Should You Work On That Task Right Now?</h1>
+  
+  <div class="flowchart">
+    
+    <!-- Start Node -->
+    <div class="node">
+      Do you have coffee?
+    </div>
+    
+    <!-- Branches for YES / NO -->
+    <div class="branch-container">
+      
+      <!-- YES Branch -->
+      <div>
+        <div class="decision">Yes</div>
+        <div class="node">
+          Great! Enjoy a quick sip.
+        </div>
+        
+        <div class="node">
+          Ready to dive into emails?
+        </div>
+        
+        <div class="branch-container">
+          
+          <!-- Sub-branch for Emails -->
+          <div>
+            <div class="decision">Yes</div>
+            <div class="node">
+              Fire away! Respond to urgent items first.
+            </div>
+            <div class="node leaf">
+              <strong>Outcome:</strong><br>
+              Inbox tamed, proceed to grading!
+            </div>
+          </div>
+          
+          <!-- Sub-branch for “Not yet” -->
+          <div>
+            <div class="decision">No</div>
+            <div class="node">
+              Still waking up? Skim your schedule first.
+            </div>
+            <div class="node leaf">
+              <strong>Outcome:</strong><br>
+              Morning routine complete, check emails later.
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- NO Branch -->
+      <div>
+        <div class="decision">No</div>
+        <div class="node">
+          Consider grabbing some tea or water instead.
+        </div>
+        <div class="node">
+          Do you feel awake enough to grade right now?
+        </div>
+        
+        <div class="branch-container">
+          
+          <!-- Sub-branch for Grading -->
+          <div>
+            <div class="decision">Yes</div>
+            <div class="node">
+              Grade away! Remember to take breaks.
+            </div>
+            <div class="node leaf">
+              <strong>Outcome:</strong><br>
+              Grading done, time for research or writing next!
+            </div>
+          </div>
+          
+          <!-- Sub-branch for “Need a boost” -->
+          <div>
+            <div class="decision">No</div>
+            <div class="node">
+              Try a quick walk or snack to recharge.
+            </div>
+            <div class="node leaf">
+              <strong>Outcome:</strong><br>
+              Break complete, attempt grading or emails again.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
